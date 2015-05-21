@@ -3,7 +3,6 @@
   "url": "https://beta.getobeya.com",
   "actions": {
     "create": "Create a Obeya story",
-    "view": "View in Obeya",
     "object": "Obeya Story"
   },
   "type": "issueTracker",
@@ -14,13 +13,13 @@
       "description": "Your Organization ID"
     },
     {
-      "name": "httpUser",
+      "name": "username",
       "label": "Username - [Obeya]",
       "description": "Your Obeya username",
       "type": "username"
     },
     {
-      "name": "httpPassword",
+      "name": "password",
       "label": "Password - [Obeya]",
       "description": "Your Obeya password",
       "type": "password"

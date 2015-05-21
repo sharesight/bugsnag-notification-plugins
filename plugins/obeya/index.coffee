@@ -1,8 +1,34 @@
 NotificationPlugin = require "../../notification-plugin"
 
 class Obeya extends NotificationPlugin
-  @getListId: (config, callback) ->
+  BASE_URL = "https://beta.getobeya.com/rest/1"
+
+  @openIssue: (config, event, callback) ->
+
+    data =
+      "name":          "#{event.error.exceptionClass} in #{event.error.context}"
+      "bin_id":        config?.binId
+      "ticketType_id": config?.ticketTypeId
+      # TODO
+
+    ticketId = event.error.id
+
     @request
-      .get("https://obeya.co/rest/1/#{config?.orgId}/")
+      .post("#{BASE_URL}/#{config?.orgId}/tickets/#{ticketId}")
+      .auth(config.username, config.password)
+      .send(data)
+      .timeout(4000)
+      .on("error", callback)
+      .end (res) ->
+        return callback(res.error) if res.error
+
+        callback null, res.body
+
+  @receiveEvent: (config, event, callback) ->
+
+    if event?.trigger?.type == "linkExistingIssue"
+      return callback(null, null)
+
+    @openIssue(config, event, callback)
 
 module.exports = Obeya

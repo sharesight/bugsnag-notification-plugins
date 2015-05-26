@@ -7,11 +7,11 @@ class Obeya extends NotificationPlugin
 
     data =
       "name":          "#{event.error.exceptionClass} in #{event.error.context}"
-      "bin_id":        config?.binId
-      "ticketType_id": config?.ticketTypeId
-      # TODO
+      "bin_id":        "#{config?.binId}"
+      "ticketType_id": "#{config?.ticketTypeId}"
+      "description":   "#{event.error.message}. Stacktrace: #{event.error.stacktrace}. Url: #{event.error.url}"
 
-    ticketId = event.error.id
+    ticketId = "#{new Date().getTime()}_#{Math.random()}"
 
     @request
       .post("#{BASE_URL}/#{config?.orgId}/tickets/#{ticketId}")

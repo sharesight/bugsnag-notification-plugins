@@ -13,26 +13,26 @@
       "description": "Your Organization ID"
     },
     {
+      "name": "binId",
+      "label": "Bin Id",
+      "description": "Your Obeya Bin ID"
+    },
+    {
+      "name": "ticketTypeId",
+      "label": "Ticket Type Id",
+      "description": "Your Obeya Ticket Type ID"
+    },
+    {
       "name": "username",
-      "label": "Username - [Obeya]",
+      "label": "Username - [Obeya login]",
       "description": "Your Obeya username",
       "type": "username"
     },
     {
       "name": "password",
-      "label": "Password - [Obeya]",
+      "label": "Password - [Obeya password]",
       "description": "Your Obeya password",
       "type": "password"
-    },
-    {
-      "name": "binId",
-      "label": "Bin for the ticket",
-      "description": "Your Obeya bin ID [check on Obeya]",
-    },
-    {
-      "name": "ticketTypeId",
-      "label": "Ticket type id",
-      "description": "Your Obeya ticket type ID [Check on obeya]",
     }
   ]
 }

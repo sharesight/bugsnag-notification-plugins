@@ -12,21 +12,26 @@ class Obeya extends NotificationPlugin
       "description":   "#{event.error.message}. Stacktrace: #{event.error.stacktrace}. Url: #{event.error.url}"
 
 
-    if event.error.id?
-      ticketId = "bugsnag_#{event.error.id}"
-    else
-      ticketId = "#{new Date().getTime()}_#{Math.random()}"
-
     @request
-      .post("#{BASE_URL}/#{config?.orgId}/tickets/#{ticketId}")
+      .get("#{BASE_URL}/#{config?.orgId}/ids?amount=1")
       .auth(config.username, config.password)
       .send(data)
       .timeout(4000)
       .on("error", callback)
-      .end (res) ->
-        return callback(res.error) if res.error
+      .end (res) =>
 
-        callback null, res.body
+        return callback(res.error) if res.error
+        ticketId = res.body[0]
+
+        @request
+          .post("#{BASE_URL}/#{config?.orgId}/tickets/#{ticketId}")
+          .auth(config.username, config.password)
+          .send(data)
+          .timeout(4000)
+          .on("error", callback)
+          .end (r) ->
+            return callback(r.error) if r.error
+            callback null, r.body
 
   @receiveEvent: (config, event, callback) ->
 

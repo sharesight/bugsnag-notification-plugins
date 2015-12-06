@@ -1,0 +1,38 @@
+{
+  "name": "Obeya",
+  "url": "https://beta.getobeya.com",
+  "actions": {
+    "create": "Create a Obeya story",
+    "object": "Obeya Story"
+  },
+  "type": "issueTracker",
+  "fields": [
+    {
+      "name": "orgId",
+      "label": "Org Id",
+      "description": "Your Organization ID"
+    },
+    {
+      "name": "binId",
+      "label": "Bin Id",
+      "description": "Your Obeya Bin ID"
+    },
+    {
+      "name": "ticketTypeId",
+      "label": "Ticket Type Id",
+      "description": "Your Obeya Ticket Type ID"
+    },
+    {
+      "name": "username",
+      "label": "Username - [Obeya login]",
+      "description": "Your Obeya username",
+      "type": "username"
+    },
+    {
+      "name": "password",
+      "label": "Password - [Obeya password]",
+      "description": "Your Obeya password",
+      "type": "password"
+    }
+  ]
+}
